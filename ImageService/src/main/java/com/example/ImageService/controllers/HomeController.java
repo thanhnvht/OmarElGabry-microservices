@@ -19,7 +19,7 @@ public class HomeController {
 //    private ImageRepository imageRepository;
 
 //    @RequestMapping("/saveImages")
-    public static List<Image> saveImages() {
+    public static List<Image> savedImages() {
         List<Image> images = Arrays.asList(
                 new Image( "Treehouse of Horror V", "https://www.imdb.com/title/tt0096697/mediaviewer/rm3842005760"),
                 new Image( "The Town", "https://www.imdb.com/title/tt0096697/mediaviewer/rm3698134272"),
@@ -31,6 +31,6 @@ public class HomeController {
     @RequestMapping("/images")
     public List<Image> getImages() {
 //        return imageRepository.findAll();
-        return saveImages();
+        return savedImages();
     }
 }
