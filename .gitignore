@@ -5,6 +5,8 @@
 /target/
 !.mvn/wrapper/maven-wrapper.jar
 
+.recommenders/**
+
 ### STS ###
 .apt_generated
 .classpath
