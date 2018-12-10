@@ -14,7 +14,7 @@ import com.netflix.ribbon.proxy.annotation.Http.HttpMethod;
 import javax.servlet.http.HttpServletResponse;
 
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfiguration {
+public class SecurityTokenConfig extends WebSecurityConfiguration {
 
     @Autowired
     private JwtConfig jwtConfig;
@@ -25,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfiguration {
                 .and().exceptionHandling().authenticationEntryPoint((req, rsp, e)-> rsp.sendError(HttpServletResponse.SC_UNAUTHORIZED))
                 .and().addFilterAfter(new JwtTokenAuthenticationFilter(jwtConfig), UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
-                	.antMatchers(HttpMethod.POST, jwtConfig.getUri()).permitAll()
+                	.antMatchers(org.springframework.http.HttpMethod.POST, jwtConfig.getUri()).permitAll()
                 	.antMatchers("/gallery"+"/admin/**").hasRole("ADMIN")
                 	.anyRequest().authenticated();
     }
